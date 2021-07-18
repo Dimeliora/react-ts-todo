@@ -16,3 +16,16 @@ body {
   font-family: "Encode Sans SC", sans-serif;
   font-size: 1.6rem;
 }
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 30px 15px;
+}
+
+.todos {
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}

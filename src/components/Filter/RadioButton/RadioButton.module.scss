@@ -1,0 +1,50 @@
+@import "../../../styles/vars";
+
+.radioButton {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding-right: 25px;
+
+  &__label {
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: -23px;
+      top: 2px;
+      display: block;
+      width: 15px;
+      height: 15px;
+      border: 1px solid $primary-color;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: -17px;
+      top: 5px;
+      display: none;
+      width: 11px;
+      height: 11px;
+      background-color: $primary-color;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  &__:checked + .todos-by-status__radio-label::after {
+    display: block;
+  }
+}

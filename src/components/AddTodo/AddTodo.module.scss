@@ -1,0 +1,52 @@
+@import "../../styles/vars";
+
+.addTodo {
+  &__form {
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+
+  &__formControl {
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.6rem;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+
+  &__btn {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__btnIcon {
+    width: 30px;
+    height: 30px;
+    fill: $primary-color;
+  }
+}

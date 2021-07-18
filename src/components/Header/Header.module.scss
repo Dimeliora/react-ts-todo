@@ -1,0 +1,26 @@
+@import "../../styles/vars";
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 15px 20px;
+
+  &__title {
+    color: $primary-color;
+  }
+
+  &__info {
+    display: flex;
+  }
+
+  &__infoItem {
+    &:first-child {
+      margin-right: 30px;
+    }
+  }
+
+  &__value {
+    color: $primary-color;
+  }
+}
