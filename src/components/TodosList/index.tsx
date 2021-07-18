@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState, useContext, useCallback } from "react";
+import { observer } from "mobx-react-lite";
+
+import { StoreCtx } from "../../store";
 
 import TodosListItem from "./TodosListItem";
 
 import s from "./TodosList.module.scss";
 
-import { Todo } from "../../types/todos";
+const TodosList: React.FC = observer(() => {
+  const { items, checkItem, removeItem, updateItem } = useContext(StoreCtx);
 
-const items: Todo[] = [
-  { id: 2, title: "PROFIT!!!", completed: false },
-  { id: 1, title: "Try it with ReactJS", completed: false },
-  { id: 0, title: "Learn TypeScript", completed: true },
-];
+  const [editItemId, setEditItemId] = useState<number | null>(null);
 
-const TodosList: React.FC = () => {
+  const editItemChangeHandler = useCallback(
+    (id: number | null = null, ref: HTMLElement | null = null): void => {
+      setEditItemId(id);
+    },
+    []
+  );
+
   const todosListPlaceholder = (
     <h2 className={s.todosList__placeholder}>No todos</h2>
   );
@@ -20,7 +26,15 @@ const TodosList: React.FC = () => {
   const todosList = (
     <ul className={s.todosList__element}>
       {items.map((item) => (
-        <TodosListItem key={item.id} item={item} isEditing={item.id > 1} />
+        <TodosListItem
+          key={item.id}
+          item={item}
+          isEditing={item.id === editItemId}
+          onCheck={checkItem}
+          onRemove={removeItem}
+          onUpdate={updateItem}
+          onEdit={editItemChangeHandler}
+        />
       ))}
     </ul>
   );
@@ -33,6 +47,6 @@ const TodosList: React.FC = () => {
       {hasItems && todosList}
     </section>
   );
-};
+});
 
 export default TodosList;

@@ -10,7 +10,7 @@ interface TodoItemInputProps {
 }
 
 const TodoItemInput: React.FC<TodoItemInputProps> = (props) => {
-  const { value } = props;
+  const { value, onApply } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -20,8 +20,14 @@ const TodoItemInput: React.FC<TodoItemInputProps> = (props) => {
     }
   }, []);
 
+  const formSubmitHandler = (e: React.FormEvent): void => {
+    e.preventDefault();
+
+    onApply(inputRef.current!.value);
+  };
+
   return (
-    <form className={s.todoItemInput}>
+    <form className={s.todoItemInput} onSubmit={formSubmitHandler}>
       <button className={s.todoItemInput__btn} type="submit">
         <ApplyIcon className={s.todoItemInput__btnIcon} />
       </button>
