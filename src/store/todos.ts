@@ -27,6 +27,16 @@ export class Todos {
     return this.items.find((item) => item.id === id);
   }
 
+  addItem(title: string): void {
+    const newTodo: Todo = {
+      id: +Math.random().toFixed(7).slice(2),
+      title,
+      completed: false,
+    };
+
+    this.items.unshift(newTodo);
+  }
+
   checkItem(id: number): void {
     const found = this.findItem(id);
     if (found) {

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { observer } from "mobx-react-lite";
 
 import { StoreCtx } from "../../store";
@@ -11,13 +11,31 @@ const TodosList: React.FC = observer(() => {
   const { items, checkItem, removeItem, updateItem } = useContext(StoreCtx);
 
   const [editItemId, setEditItemId] = useState<number | null>(null);
+  const [editItemRef, setEditItemRef] = useState<HTMLElement | null>(null);
 
   const editItemChangeHandler = useCallback(
     (id: number | null = null, ref: HTMLElement | null = null): void => {
       setEditItemId(id);
+      setEditItemRef(ref);
     },
     []
   );
+
+  useEffect(() => {
+    const documentClickHandler = (e: MouseEvent): void => {
+      const path = e.composedPath();
+      if (editItemRef && !path.includes(editItemRef)) {
+        setEditItemId(null);
+        setEditItemRef(null);
+      }
+    };
+
+    document.addEventListener("click", documentClickHandler);
+
+    return () => {
+      document.removeEventListener("click", documentClickHandler);
+    };
+  }, [editItemRef]);
 
   const todosListPlaceholder = (
     <h2 className={s.todosList__placeholder}>No todos</h2>
