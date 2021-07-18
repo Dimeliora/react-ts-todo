@@ -5,6 +5,17 @@
     display: flex;
     align-items: flex-end;
     padding: 20px;
+
+    &__invalid {
+      .addTodo__input {
+        border-color: $danger-color;
+
+        &::placeholder {
+          color: $danger-color;
+          font-size: 1.4rem;
+        }
+      }
+    }
   }
 
   &__formControl {
@@ -41,6 +52,15 @@
 
     &:hover {
       transform: scale(1.15);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+
+      .addTodo__btnIcon {
+        fill: $danger-color;
+      }
     }
   }
 
