@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 import { Todo } from "../types/todos";
+import { FilterStatus } from "../types/filter-status";
 
 const MOCK_TODOS: Todo[] = [
   { id: 2, title: "PROFIT!!!", completed: false },
@@ -10,6 +11,8 @@ const MOCK_TODOS: Todo[] = [
 
 export class Todos {
   items: Todo[] = MOCK_TODOS;
+  filterTemplate: string = "";
+  filterStatus: FilterStatus = "all";
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -23,8 +26,40 @@ export class Todos {
     return this.items.filter((item) => !item.completed).length;
   }
 
+  get itemsByTitle(): Todo[] {
+    const trimmedTemplate = this.filterTemplate.trim();
+
+    if (trimmedTemplate === "") {
+      return this.items;
+    }
+
+    return this.items.filter((item) =>
+      item.title.toLowerCase().includes(trimmedTemplate.toLowerCase())
+    );
+  }
+
+  get filteredItems(): Todo[] {
+    if (this.filterStatus === "all") {
+      return this.itemsByTitle;
+    }
+
+    if (this.filterStatus === "done") {
+      return this.itemsByTitle.filter((item) => item.completed);
+    }
+
+    return this.itemsByTitle.filter((item) => !item.completed);
+  }
+
   private findItem(id: number): Todo | void {
     return this.items.find((item) => item.id === id);
+  }
+
+  changeFilterTemplate(value: string): void {
+    this.filterTemplate = value;
+  }
+
+  changeFilterStatus(value: FilterStatus): void {
+    this.filterStatus = value;
   }
 
   addItem(title: string): void {

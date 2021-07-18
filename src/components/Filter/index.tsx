@@ -1,4 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useContext, useCallback } from "react";
+import { observer } from "mobx-react-lite";
+
+import { StoreCtx } from "../../store";
 
 import RadioButton from "./RadioButton";
 
@@ -8,8 +11,24 @@ import { FilterStatus } from "../../types/filter-status";
 
 const STATUS_VALUES: FilterStatus[] = ["all", "done", "left"];
 
-const Filter: React.FC = () => {
-  const filterStatusChangeHandler = useCallback((): void => {}, []);
+const Filter: React.FC = observer(() => {
+  const {
+    filterTemplate,
+    filterStatus,
+    changeFilterTemplate,
+    changeFilterStatus,
+  } = useContext(StoreCtx);
+
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    changeFilterTemplate(e.target.value);
+  };
+
+  const filterStatusChangeHandler = useCallback(
+    (status: FilterStatus): void => {
+      changeFilterStatus(status);
+    },
+    [changeFilterStatus]
+  );
 
   return (
     <section className={s.filter}>
@@ -22,6 +41,8 @@ const Filter: React.FC = () => {
           type="text"
           id="filter-title"
           placeholder="Type title to filter"
+          value={filterTemplate}
+          onChange={inputChangeHandler}
         />
       </div>
       <div className={s.filter__byStatus}>
@@ -31,7 +52,7 @@ const Filter: React.FC = () => {
             <RadioButton
               key={status}
               value={status}
-              checked={false}
+              checked={filterStatus === status}
               classname={s.filter__byStatus__item}
               onChange={filterStatusChangeHandler}
             />
@@ -40,6 +61,6 @@ const Filter: React.FC = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Filter;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { observer } from "mobx-react-lite";
+import cn from "classnames";
 
 import { StoreCtx } from "../../store";
 
@@ -8,7 +9,8 @@ import TodosListItem from "./TodosListItem";
 import s from "./TodosList.module.scss";
 
 const TodosList: React.FC = observer(() => {
-  const { items, checkItem, removeItem, updateItem } = useContext(StoreCtx);
+  const { filteredItems, checkItem, removeItem, updateItem } =
+    useContext(StoreCtx);
 
   const [editItemId, setEditItemId] = useState<number | null>(null);
   const [editItemRef, setEditItemRef] = useState<HTMLElement | null>(null);
@@ -42,8 +44,12 @@ const TodosList: React.FC = observer(() => {
   );
 
   const todosList = (
-    <ul className={s.todosList__element}>
-      {items.map((item) => (
+    <ul
+      className={cn(s.todosList__element, {
+        [s.todosList__element__noPointers]: editItemId !== null,
+      })}
+    >
+      {filteredItems.map((item) => (
         <TodosListItem
           key={item.id}
           item={item}
@@ -57,7 +63,7 @@ const TodosList: React.FC = observer(() => {
     </ul>
   );
 
-  const hasItems = items.length > 0;
+  const hasItems = filteredItems.length > 0;
 
   return (
     <section className={s.todosList}>

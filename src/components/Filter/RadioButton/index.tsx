@@ -1,5 +1,5 @@
 import React from "react";
-import cn from "classnames";
+import cn from 'classnames'
 
 import s from "./RadioButton.module.scss";
 
