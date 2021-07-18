@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #1b1b1b;
+  font-family: "Encode Sans SC", sans-serif;
+  font-size: 1.6rem;
+}
