@@ -1,0 +1,95 @@
+@import "../../../styles/vars";
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 40px;
+  border-top: 1px solid $border-light-color;
+
+  &:hover {
+    .todos-list__item-edit-btn {
+      visibility: visible;
+    }
+  }
+
+  &__body {
+    position: relative;
+    width: 85%;
+  }
+
+  &__controls {
+    margin-left: auto;
+    visibility: hidden;
+  }
+
+  &__done {
+    .todos-list__item-edit-btn {
+      display: none;
+    }
+
+    .todos-list__item-title {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+  }
+
+  &__edit {
+    padding-right: 40px;
+    pointer-events: all;
+
+    .todos-list__item-body {
+      width: 100%;
+    }
+
+    .todos-list__item:hover {
+      .todos-list__item-controls {
+        visibility: visible;
+      }
+    }
+
+    .todos-list__item-controls {
+      display: none;
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  &__btnIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__btnCheck {
+    margin-right: 10px;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    .todos-list__item-button-icon {
+      fill: $success-color;
+    }
+  }
+
+  &__btnRemove {
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    .todos-list__item-button-icon {
+      fill: $danger-color;
+    }
+  }
+}

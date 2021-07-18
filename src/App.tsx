@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Filter, AddTodo } from "./components";
+import { Header, Filter, AddTodo, TodosList } from "./components";
 
 const App: React.FC = () => {
   return (
@@ -9,6 +9,7 @@ const App: React.FC = () => {
         <Header />
         <Filter />
         <AddTodo />
+        <TodosList />
       </div>
     </div>
   );
