@@ -26,7 +26,7 @@
     &::after {
       content: "";
       position: absolute;
-      right: -17px;
+      right: -20px;
       top: 5px;
       display: none;
       width: 11px;
@@ -42,9 +42,9 @@
     width: 0;
     height: 0;
     opacity: 0;
-  }
 
-  &__:checked + .todos-by-status__radio-label::after {
-    display: block;
+    &:checked + .radioButton__label::after {
+      display: block;
+    }
   }
 }

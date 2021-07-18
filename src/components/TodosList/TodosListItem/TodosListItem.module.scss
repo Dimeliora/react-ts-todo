@@ -7,9 +7,43 @@
   border-top: 1px solid $border-light-color;
 
   &:hover {
-    .todos-list__item-edit-btn {
+    .todoItem__editBtn {
       visibility: visible;
     }
+
+    .todoItem__controls {
+      visibility: visible;
+    }
+  }
+
+  &__editBtn {
+    position: absolute;
+    top: 50%;
+    left: -27px;
+    transform: translateY(-50%);
+    visibility: hidden;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.15);
+    }
+  }
+
+  &__editBtnIcon {
+    width: 18px;
+    height: 18px;
+    fill: $primary-color;
+  }
+
+  &__titleCompleted {
+    text-decoration: line-through;
+    opacity: 0.5;
   }
 
   &__body {
@@ -23,13 +57,8 @@
   }
 
   &__done {
-    .todos-list__item-edit-btn {
+    .todoItem__editBtn {
       display: none;
-    }
-
-    .todos-list__item-title {
-      text-decoration: line-through;
-      opacity: 0.5;
     }
   }
 
@@ -37,17 +66,11 @@
     padding-right: 40px;
     pointer-events: all;
 
-    .todos-list__item-body {
+    .todoItem__body {
       width: 100%;
     }
 
-    .todos-list__item:hover {
-      .todos-list__item-controls {
-        visibility: visible;
-      }
-    }
-
-    .todos-list__item-controls {
+    .todoItem__controls {
       display: none;
     }
   }
@@ -78,7 +101,7 @@
       transform: scale(1.15);
     }
 
-    .todos-list__item-button-icon {
+    .todoItem__btnIcon {
       fill: $success-color;
     }
   }
@@ -88,7 +111,7 @@
       transform: scale(1.15);
     }
 
-    .todos-list__item-button-icon {
+    .todoItem__btnIcon {
       fill: $danger-color;
     }
   }

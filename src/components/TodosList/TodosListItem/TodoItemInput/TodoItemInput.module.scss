@@ -1,0 +1,78 @@
+@import "../../../../styles/vars";
+
+.todoItemInput {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: $primary-color;
+    animation: expandBorder 0.2s forwards;
+  }
+
+  &__invalid {
+    &::after {
+      background-color: $danger-color;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    margin-right: 10px;
+    padding: 3px 8px 4px 0;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.8rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $danger-color;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.1s;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.15);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+
+      .todos-list__item-edit-icon {
+        fill: $danger-color;
+      }
+    }
+  }
+
+  &__btnIcon {
+    width: 18px;
+    height: 18px;
+    fill: $primary-color;
+  }
+}
+
+@keyframes expandBorder {
+  100% {
+    width: 100%;
+  }
+}

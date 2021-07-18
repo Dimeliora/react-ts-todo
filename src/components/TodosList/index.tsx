@@ -20,7 +20,7 @@ const TodosList: React.FC = () => {
   const todosList = (
     <ul className={s.todosList__element}>
       {items.map((item) => (
-        <TodosListItem key={item.id} item={item} />
+        <TodosListItem key={item.id} item={item} isEditing={item.id > 1} />
       ))}
     </ul>
   );
