@@ -1,72 +1,86 @@
 @import "../../styles/vars";
+@import "../../styles/media";
 
 .addTodo {
-  &__form {
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
+	&Form {
+		display: flex;
+		align-items: flex-end;
+		padding: 20px;
 
-    &__invalid {
-      .addTodo__input {
-        border-color: $danger-color;
+		&Invalid {
+			.addTodoInput {
+				border-color: $danger-color;
 
-        &::placeholder {
-          color: $danger-color;
-          font-size: 1.4rem;
-        }
-      }
-    }
-  }
+				&::placeholder {
+					color: $danger-color;
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
 
-  &__formControl {
-    width: 100%;
-    margin-right: 20px;
-  }
+	&FormControl {
+		width: 100%;
+		margin-right: 20px;
+	}
 
-  &__label {
-    display: inline-block;
-    margin-bottom: 5px;
-  }
+	&Label {
+		display: inline-block;
+		margin-bottom: 5px;
+		font-size: 1.8rem;
 
-  &__input {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid $border-color;
-    border-radius: 3px;
-    color: inherit;
-    font-family: inherit;
-    font-size: 1.6rem;
+		@include mobile {
+			font-size: 1.6rem;
+		}
+	}
 
-    &:focus {
-      outline: none;
-      border-color: $primary-color;
-    }
-  }
+	&Input {
+		width: 100%;
+		padding: 8px 10px;
+		border: 1px solid $border-color;
+		border-radius: 3px;
+		color: inherit;
+		font-family: inherit;
+		font-size: 1.6rem;
 
-  &__btn {
-    border: none;
-    outline: none;
-    background-color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s;
+		@include mobile {
+			font-size: 1.4rem;
+		}
 
-    &:hover {
-      transform: scale(1.15);
-    }
+		&:focus {
+			outline: none;
+			border-color: $primary-color;
+		}
+	}
 
-    &:disabled {
-      opacity: 0.5;
-      cursor: default;
+	&Btn {
+		border: none;
+		outline: none;
+		background-color: #fff;
+		cursor: pointer;
+		transition: transform 0.2s;
 
-      .addTodo__btnIcon {
-        fill: $danger-color;
-      }
-    }
-  }
+		&:hover {
+			transform: scale(1.15);
 
-  &__btnIcon {
-    width: 30px;
-    height: 30px;
-    fill: $primary-color;
-  }
+			@include tablet {
+				transform: none;
+			}
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: default;
+
+			.addTodoBtnIcon {
+				fill: $danger-color;
+			}
+		}
+	}
+
+	&BtnIcon {
+		width: 30px;
+		height: 30px;
+		fill: $primary-color;
+	}
 }

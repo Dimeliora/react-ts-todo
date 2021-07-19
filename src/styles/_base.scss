@@ -1,31 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;700&display=swap");
+@import "./media";
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  background-color: #f7f7f7;
-  color: #1b1b1b;
-  font-family: "Encode Sans SC", sans-serif;
-  font-size: 1.6rem;
+	background-color: #f7f7f7;
+	color: #1b1b1b;
+	font-family: "Encode Sans SC", sans-serif;
+	font-size: 1.6rem;
+
+	@include mobile {
+		font-size: 1.4rem;
+	}
 }
 
 .container {
-  max-width: 1170px;
-  margin: 0 auto;
-  padding: 30px 15px;
+	max-width: 1170px;
+	margin: 0 auto;
+	padding: 15px;
 }
 
 .todos {
-  margin: 0 auto;
-  border-radius: 5px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+	margin: 0 auto;
+	border-radius: 5px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
 }

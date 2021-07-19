@@ -32,12 +32,12 @@ const Filter: React.FC = observer(() => {
 
   return (
     <section className={s.filter}>
-      <div className={s.filter__byTitle}>
-        <label className={s.filter__byTitle__label} htmlFor="filter-title">
+      <div className={s.filterByTitle}>
+        <label className={s.filterByTitleLabel} htmlFor="filter-title">
           Filter by title:
         </label>
         <input
-          className={s.filter__byTitle__input}
+          className={s.filterByTitleInput}
           type="text"
           id="filter-title"
           placeholder="Type title to filter"
@@ -45,15 +45,15 @@ const Filter: React.FC = observer(() => {
           onChange={inputChangeHandler}
         />
       </div>
-      <div className={s.filter__byStatus}>
-        <h2 className={s.filter__byStatus__heading}>Filter by status:</h2>
-        <div className={s.filter__byStatus__inputs}>
+      <div className={s.filterByStatus}>
+        <h2 className={s.filterByStatusHeading}>Filter by status:</h2>
+        <div className={s.filterByStatusInputs}>
           {STATUS_VALUES.map((status) => (
             <RadioButton
               key={status}
               value={status}
               checked={filterStatus === status}
-              classname={s.filter__byStatus__item}
+              classname={s.filterByStatusItem}
               onChange={filterStatusChangeHandler}
             />
           ))}

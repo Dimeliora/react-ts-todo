@@ -1,18 +1,19 @@
 @import "../../styles/vars";
+@import "../../styles/media";
 
 .todosList {
-  &__element {
-    list-style: none;
+	&Element {
+		list-style: none;
 
-    &__noPointers {
-      pointer-events: none;
-    }
-  }
+		&NoPointers {
+			pointer-events: none;
+		}
+	}
 
-  &__placeholder {
-    padding: 20px;
-    border-top: 1px solid $border-light-color;
-    text-align: center;
-    font-size: 3.2rem;
-  }
+	&Placeholder {
+		padding: 20px;
+		border-top: 1px solid $border-light-color;
+		text-align: center;
+		font-size: 3.2rem;
+	}
 }

@@ -10,13 +10,13 @@ const Header: React.FC = observer(() => {
 
   return (
     <header className={s.header}>
-      <h1 className={s.header__title}>ReactTS Todo</h1>
-      <div className={s.header__info}>
-        <div className={s.header__infoItem}>
-          Total: <span className={s.header__value}>{totalItemsAmount}</span>
+      <h1 className={s.headerTitle}>ReactTS Todo</h1>
+      <div className={s.headerInfo}>
+        <div className={s.headerInfoItem}>
+          Total: <span className={s.headerValue}>{totalItemsAmount}</span>
         </div>
-        <div className={s.header__infoItem}>
-          Left: <span className={s.header__value}>{leftItemsAmount}</span>
+        <div className={s.headerInfoItem}>
+          Left: <span className={s.headerValue}>{leftItemsAmount}</span>
         </div>
       </div>
     </header>

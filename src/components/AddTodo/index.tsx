@@ -40,26 +40,26 @@ const AddTodo: React.FC = observer(() => {
   return (
     <section className={s.addTodo}>
       <form
-        className={cn(s.addTodo__form, {
-          [s.addTodo__form__invalid]: isInvalid,
+        className={cn(s.addTodoForm, {
+          [s.addTodoFormInvalid]: isInvalid,
         })}
         onSubmit={addNewItemHandler}
       >
-        <div className={s.addTodo__formControl}>
-          <label className={s.addTodo__label} htmlFor="new-todo">
+        <div className={s.addTodoFormControl}>
+          <label className={s.addTodoLabel} htmlFor="new-todo">
             New todo:
           </label>
           <input
             ref={inputRef}
-            className={s.addTodo__input}
+            className={s.addTodoInput}
             type="text"
             id="new-todo"
             placeholder={inputPlaceholder}
             onFocus={inputFocusHandler}
           />
         </div>
-        <button className={s.addTodo__btn} type="submit" disabled={isInvalid}>
-          <AddIcon className={s.addTodo__btnIcon} />
+        <button className={s.addTodoBtn} type="submit" disabled={isInvalid}>
+          <AddIcon className={s.addTodoBtnIcon} />
         </button>
       </form>
     </section>

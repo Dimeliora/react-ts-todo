@@ -50,20 +50,20 @@ const TodoItemInput: React.FC<TodoItemInputProps> = (props) => {
   return (
     <form
       className={cn(s.todoItemInput, {
-        [s.todoItemInput__invalid]: isInvalid,
+        [s.todoItemInputInvalid]: isInvalid,
       })}
       onSubmit={formSubmitHandler}
     >
       <button
-        className={s.todoItemInput__btn}
+        className={s.todoItemInputBtn}
         type="submit"
         disabled={isInvalid}
       >
-        <ApplyIcon className={s.todoItemInput__btnIcon} />
+        <ApplyIcon className={s.todoItemInputBtnIcon} />
       </button>
       <input
         ref={inputRef}
-        className={s.todoItemInput__input}
+        className={s.todoItemInputField}
         type="text"
         defaultValue={value}
         placeholder={inputPlaceholder}

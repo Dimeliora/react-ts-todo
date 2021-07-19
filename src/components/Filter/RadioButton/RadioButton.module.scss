@@ -6,7 +6,7 @@
   align-items: center;
   padding-right: 25px;
 
-  &__label {
+  &Label {
     position: relative;
     cursor: pointer;
 
@@ -37,13 +37,13 @@
     }
   }
 
-  &__input {
+  &Input {
     position: absolute;
     width: 0;
     height: 0;
     opacity: 0;
 
-    &:checked + .radioButton__label::after {
+    &:checked + .radioButtonLabel::after {
       display: block;
     }
   }

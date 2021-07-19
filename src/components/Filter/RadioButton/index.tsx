@@ -22,7 +22,7 @@ const RadioButton: React.FC<RadioButtonProps> = (props) => {
   return (
     <div className={cn(s.radioButton, classname)}>
       <input
-        className={s.radioButton__input}
+        className={s.radioButtonInput}
         type="radio"
         name="filter-status"
         id={`filter-${value}`}
@@ -30,7 +30,7 @@ const RadioButton: React.FC<RadioButtonProps> = (props) => {
         checked={checked}
         onChange={radioChangeHandler}
       />
-      <label className={s.radioButton__label} htmlFor={`filter-${value}`}>
+      <label className={s.radioButtonLabel} htmlFor={`filter-${value}`}>
         {value}
       </label>
     </div>

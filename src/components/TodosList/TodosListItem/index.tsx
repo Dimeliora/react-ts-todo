@@ -44,12 +44,12 @@ const TodosListItem: React.FC<TodosListItemProps> = observer((props) => {
 
   const itemTitle = (
     <>
-      <button className={s.todoItem__editBtn} onClick={toggleEditModeHandler}>
-        <PencilIcon className={s.todoItem__editBtnIcon} />
+      <button className={s.todoItemEditBtn} onClick={toggleEditModeHandler}>
+        <PencilIcon className={s.todoItemEditBtnIcon} />
       </button>
       <div
         className={cn({
-          [s.todoItem__titleCompleted]: item.completed,
+          [s.todoItemTitleCompleted]: item.completed,
         })}
       >
         {item.title}
@@ -61,11 +61,11 @@ const TodosListItem: React.FC<TodosListItemProps> = observer((props) => {
     <li
       ref={listItemRef}
       className={cn(s.todoItem, {
-        [s.todoItem__done]: item.completed,
-        [s.todoItem__edit]: isEditing,
+        [s.todoItemDone]: item.completed,
+        [s.todoItemEdit]: isEditing,
       })}
     >
-      <div className={s.todoItem__body}>
+      <div className={s.todoItemBody}>
         {!isEditing && itemTitle}
         {isEditing && (
           <TodoItemInput
@@ -74,18 +74,18 @@ const TodosListItem: React.FC<TodosListItemProps> = observer((props) => {
           />
         )}
       </div>
-      <div className={s.todoItem__controls}>
+      <div className={s.todoItemControls}>
         <button
-          className={cn(s.todoItem__btn, s.todoItem__btnCheck)}
+          className={cn(s.todoItemBtn, s.todoItemBtnCheck)}
           onClick={checkClickHandler}
         >
-          <CheckIcon className={s.todoItem__btnIcon} />
+          <CheckIcon className={s.todoItemBtnIcon} />
         </button>
         <button
-          className={cn(s.todoItem__btn, s.todoItem__btnRemove)}
+          className={cn(s.todoItemBtn, s.todoItemBtnRemove)}
           onClick={removeClickHandler}
         >
-          <TrashIcon className={s.todoItem__btnIcon} />
+          <TrashIcon className={s.todoItemBtnIcon} />
         </button>
       </div>
     </li>

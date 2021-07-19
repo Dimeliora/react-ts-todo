@@ -1,26 +1,53 @@
 @import "../../styles/vars";
+@import "../../styles/media";
 
 .header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 15px 20px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding: 15px 20px;
 
-  &__title {
-    color: $primary-color;
-  }
+	@include mobile {
+		align-items: flex-start;
+	}
 
-  &__info {
-    display: flex;
-  }
+	&Title {
+		color: $primary-color;
 
-  &__infoItem {
-    &:first-child {
-      margin-right: 30px;
-    }
-  }
+		@include mobile {
+			font-size: 2.4rem;
+		}
+	}
 
-  &__value {
-    color: $primary-color;
-  }
+	&Info {
+		display: flex;
+
+		@include mobile {
+			flex-direction: column;
+		}
+	}
+
+	&InfoItem {
+		&:first-child {
+			margin-right: 30px;
+		}
+
+		@include mobile {
+			display: flex;
+			justify-content: space-between;
+
+			&:first-child {
+				margin-right: 0;
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	&Value {
+		color: $primary-color;
+
+		@include mobile {
+			margin-left: 10px;
+		}
+	}
 }

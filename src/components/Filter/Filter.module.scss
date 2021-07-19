@@ -1,55 +1,79 @@
 @import "../../styles/vars";
+@import "../../styles/media";
 
 .filter {
-  display: flex;
-  padding: 15px 20px;
+	display: flex;
+	padding: 15px 20px;
 
-  &__byTitle {
-    width: 70%;
-    margin-right: 50px;
+	@include desktop {
+		flex-direction: column;
+	}
 
-    &__label {
-      display: inline-block;
-      margin-bottom: 5px;
-    }
+	&ByTitle {
+		width: 65%;
+		margin-right: 50px;
 
-    &__input {
-      display: block;
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid $border-color;
-      border-radius: 3px;
-      color: inherit;
-      font-family: inherit;
-      font-size: 1.6rem;
+		@include desktop {
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
 
-      &:focus {
-        outline: none;
-        border-color: $primary-color;
-      }
-    }
-  }
+		&Label {
+			display: inline-block;
+			margin-bottom: 5px;
+			font-size: 1.8rem;
 
-  &__byStatus {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+			@include mobile {
+				font-size: 1.6rem;
+			}
+		}
 
-    &__heading {
-      font-size: 1.6rem;
-      font-weight: 400;
-    }
+		&Input {
+			display: block;
+			width: 100%;
+			padding: 8px 10px;
+			border: 1px solid $border-color;
+			border-radius: 3px;
+			color: inherit;
+			font-family: inherit;
+			font-size: 1.6rem;
 
-    &__inputs {
-      padding: 10px 0;
-    }
+			@include mobile {
+				font-size: 1.4rem;
+			}
 
-    &__item {
-      margin-right: 30px;
+			&:focus {
+				outline: none;
+				border-color: $primary-color;
+			}
+		}
+	}
 
-      &:last-of-type {
-        margin-right: 0;
-      }
-    }
-  }
+	&ByStatus {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		&Heading {
+			font-size: 1.8rem;
+			font-weight: 400;
+
+			@include mobile {
+				font-size: 1.6rem;
+			}
+		}
+
+		&Inputs {
+			padding: 10px 0;
+		}
+
+		&Item {
+			margin-right: 30px;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
 }
