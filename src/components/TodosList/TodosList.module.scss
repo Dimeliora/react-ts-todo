@@ -2,6 +2,12 @@
 @import "../../styles/media";
 
 .todosList {
+	padding-top: 15px;
+
+	@include mobile {
+		padding-top: 10px;
+	}
+
 	&Element {
 		list-style: none;
 

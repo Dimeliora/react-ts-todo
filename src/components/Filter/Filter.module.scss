@@ -9,6 +9,10 @@
 		flex-direction: column;
 	}
 
+	@include mobile {
+		padding: 10px;
+	}
+
 	&ByTitle {
 		width: 65%;
 		margin-right: 50px;

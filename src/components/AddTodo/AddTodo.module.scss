@@ -2,10 +2,15 @@
 @import "../../styles/media";
 
 .addTodo {
+	padding: 15px 20px;
+
+	@include mobile {
+		padding: 10px;
+	}
+
 	&Form {
 		display: flex;
 		align-items: flex-end;
-		padding: 20px;
 
 		&Invalid {
 			.addTodoInput {
@@ -22,6 +27,10 @@
 	&FormControl {
 		width: 100%;
 		margin-right: 20px;
+
+		@include mobile {
+			margin-right: 10px;
+		}
 	}
 
 	&Label {
@@ -44,6 +53,7 @@
 		font-size: 1.6rem;
 
 		@include mobile {
+			padding: 4px 6px;
 			font-size: 1.4rem;
 		}
 
@@ -82,5 +92,10 @@
 		width: 30px;
 		height: 30px;
 		fill: $primary-color;
+
+		@include mobile {
+			width: 20px;
+			height: 20px;
+		}
 	}
 }

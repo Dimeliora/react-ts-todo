@@ -7,6 +7,10 @@
 	padding: 10px 10px 10px 40px;
 	border-top: 1px solid $border-light-color;
 
+	@include mobile {
+		padding-left: 35px;
+	}
+
 	&:hover {
 		.todoItemEditBtn {
 			visibility: visible;
@@ -57,7 +61,7 @@
 
 	&TitleCompleted {
 		text-decoration: line-through;
-		opacity: 0.5;
+		opacity: 0.65;
 	}
 
 	&Body {

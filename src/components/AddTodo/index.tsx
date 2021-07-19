@@ -10,60 +10,65 @@ import { useDelay } from "../../hooks/useDelay";
 import s from "./AddTodo.module.scss";
 
 const AddTodo: React.FC = observer(() => {
-  const { addItem } = useContext(StoreCtx);
+	const { addItem } = useContext(StoreCtx);
 
-  const [isInvalid, setIsInvalid] = useDelay(3000);
+	const [isInvalid, setIsInvalid] = useDelay(3000);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 
-  const addNewItemHandler = (e: React.FormEvent): void => {
-    e.preventDefault();
+	const addNewItemHandler = (e: React.FormEvent): void => {
+		e.preventDefault();
 
-    if (inputRef.current!.value.trim() === "") {
-      setIsInvalid(true);
-      return;
-    }
+		if (inputRef.current!.value.trim() === "") {
+			setIsInvalid(true);
+			return;
+		}
 
-    addItem(inputRef.current!.value);
-    inputRef.current!.value = "";
-  };
+		addItem(inputRef.current!.value);
+		inputRef.current!.value = "";
+	};
 
-  const inputFocusHandler = (): void => {
-    setIsInvalid(false);
-  };
+	const inputFocusHandler = (): void => {
+		setIsInvalid(false);
+	};
 
-  let inputPlaceholder = "Type new todo here";
-  if (isInvalid) {
-    inputPlaceholder = "Must be filled!";
-  }
+	let inputPlaceholder = "Type new todo here";
+	if (isInvalid) {
+		inputPlaceholder = "Must be filled!";
+	}
 
-  return (
-    <section className={s.addTodo}>
-      <form
-        className={cn(s.addTodoForm, {
-          [s.addTodoFormInvalid]: isInvalid,
-        })}
-        onSubmit={addNewItemHandler}
-      >
-        <div className={s.addTodoFormControl}>
-          <label className={s.addTodoLabel} htmlFor="new-todo">
-            New todo:
-          </label>
-          <input
-            ref={inputRef}
-            className={s.addTodoInput}
-            type="text"
-            id="new-todo"
-            placeholder={inputPlaceholder}
-            onFocus={inputFocusHandler}
-          />
-        </div>
-        <button className={s.addTodoBtn} type="submit" disabled={isInvalid}>
-          <AddIcon className={s.addTodoBtnIcon} />
-        </button>
-      </form>
-    </section>
-  );
+	return (
+		<section className={s.addTodo}>
+			<form
+				className={cn(s.addTodoForm, {
+					[s.addTodoFormInvalid]: isInvalid,
+				})}
+				onSubmit={addNewItemHandler}
+			>
+				<div className={s.addTodoFormControl}>
+					<label className={s.addTodoLabel} htmlFor="new-todo">
+						New todo:
+					</label>
+					<input
+						ref={inputRef}
+						className={s.addTodoInput}
+						type="text"
+						id="new-todo"
+						placeholder={inputPlaceholder}
+						onFocus={inputFocusHandler}
+					/>
+				</div>
+				<button
+					className={s.addTodoBtn}
+					type="submit"
+					aria-label="Add todo"
+					disabled={isInvalid}
+				>
+					<AddIcon className={s.addTodoBtnIcon} />
+				</button>
+			</form>
+		</section>
+	);
 });
 
 export default AddTodo;
