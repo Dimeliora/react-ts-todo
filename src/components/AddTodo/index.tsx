@@ -18,13 +18,15 @@ const AddTodo: React.FC = () => {
   const addNewItemHandler = (e: React.FormEvent): void => {
     e.preventDefault();
 
-    if (inputRef.current!.value.trim() === "") {
-      setIsInvalid(true);
-      return;
-    }
+    if (inputRef.current) {
+      if (inputRef.current.value.trim() === "") {
+        setIsInvalid(true);
+        return;
+      }
 
-    addItem(inputRef.current!.value);
-    inputRef.current!.value = "";
+      addItem(inputRef.current.value);
+      inputRef.current!.value = "";
+    }
   };
 
   const inputFocusHandler = (): void => {

@@ -8,70 +8,72 @@ import { useDelay } from "../../../../hooks/useDelay";
 import s from "./TodoItemInput.module.scss";
 
 interface TodoItemInputProps {
-	value: string;
-	onApply: (value: string) => void;
+  value: string;
+  onApply: (value: string) => void;
 }
 
 const TodoItemInput: React.FC<TodoItemInputProps> = (props) => {
-	const { value, onApply } = props;
+  const { value, onApply } = props;
 
-	const [isInvalid, setIsInvalid] = useDelay(3000);
+  const [isInvalid, setIsInvalid] = useDelay(3000);
 
-	const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-	useEffect(() => {
-		if (inputRef.current) {
-			inputRef.current.focus();
-		}
-	}, []);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
-	const formSubmitHandler = (e: React.FormEvent): void => {
-		e.preventDefault();
+  const formSubmitHandler = (e: React.FormEvent): void => {
+    e.preventDefault();
 
-		if (inputRef.current!.value.trim() === "") {
-			setIsInvalid(true);
-			return;
-		}
+    if (inputRef.current) {
+      if (inputRef.current.value.trim() === "") {
+        setIsInvalid(true);
+        return;
+      }
 
-		onApply(inputRef.current!.value);
-	};
+      onApply(inputRef.current.value);
+    }
+  };
 
-	const inputFocusHandler = (): void => {
-		if (isInvalid) {
-			setIsInvalid(false);
-		}
-	};
+  const inputFocusHandler = (): void => {
+    if (isInvalid) {
+      setIsInvalid(false);
+    }
+  };
 
-	let inputPlaceholder = "";
-	if (isInvalid) {
-		inputPlaceholder = "Must be filled!";
-	}
+  let inputPlaceholder = "";
+  if (isInvalid) {
+    inputPlaceholder = "Must be filled!";
+  }
 
-	return (
-		<form
-			className={cn(s.todoItemInput, {
-				[s.todoItemInputInvalid]: isInvalid,
-			})}
-			onSubmit={formSubmitHandler}
-		>
-			<button
-				className={s.todoItemInputBtn}
-				type="submit"
-				aria-label="Apply todo changes"
-				disabled={isInvalid}
-			>
-				<ApplyIcon className={s.todoItemInputBtnIcon} />
-			</button>
-			<input
-				ref={inputRef}
-				className={s.todoItemInputField}
-				type="text"
-				defaultValue={value}
-				placeholder={inputPlaceholder}
-				onFocus={inputFocusHandler}
-			/>
-		</form>
-	);
+  return (
+    <form
+      className={cn(s.todoItemInput, {
+        [s.todoItemInputInvalid]: isInvalid,
+      })}
+      onSubmit={formSubmitHandler}
+    >
+      <button
+        className={s.todoItemInputBtn}
+        type="submit"
+        aria-label="Apply todo changes"
+        disabled={isInvalid}
+      >
+        <ApplyIcon className={s.todoItemInputBtnIcon} />
+      </button>
+      <input
+        ref={inputRef}
+        className={s.todoItemInputField}
+        type="text"
+        defaultValue={value}
+        placeholder={inputPlaceholder}
+        onFocus={inputFocusHandler}
+      />
+    </form>
+  );
 };
 
 export default TodoItemInput;
