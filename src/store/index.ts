@@ -1,7 +1,5 @@
 import { createContext } from "react";
 
-import { Todos } from "./todos";
+import { todos } from "./todos";
 
-export const store = new Todos();
-
-export const StoreCtx = createContext(store);
+export const StoreCtx = createContext(todos);

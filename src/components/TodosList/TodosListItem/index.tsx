@@ -14,10 +14,10 @@ import { Todo } from "../../../types/todos";
 interface TodosListItemProps {
 	item: Todo;
 	isEditing: boolean;
-	onCheck: (id: number) => void;
-	onRemove: (id: number) => void;
-	onUpdate: (id: number, title: string) => void;
-	onEdit: (id?: number, ref?: HTMLElement | null) => void;
+	onCheck: (id: string) => void;
+	onRemove: (id: string) => void;
+	onUpdate: (id: string, title: string) => void;
+	onEdit: (id?: string, ref?: HTMLElement | null) => void;
 }
 
 const TodosListItem: React.FC<TodosListItemProps> = observer((props) => {

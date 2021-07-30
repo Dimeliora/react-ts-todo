@@ -12,11 +12,11 @@ const TodosList: React.FC = observer(() => {
 	const { filteredItems, checkItem, removeItem, updateItem } =
 		useContext(StoreCtx);
 
-	const [editItemId, setEditItemId] = useState<number | null>(null);
+	const [editItemId, setEditItemId] = useState<string | null>(null);
 	const [editItemRef, setEditItemRef] = useState<HTMLElement | null>(null);
 
 	const editItemChangeHandler = useCallback(
-		(id: number | null = null, ref: HTMLElement | null = null): void => {
+		(id: string | null = null, ref: HTMLElement | null = null): void => {
 			setEditItemId(id);
 			setEditItemRef(ref);
 		},

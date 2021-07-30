@@ -1,21 +1,17 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, reaction } from "mobx";
+import { v4 as uuidv4 } from "uuid";
 
 import { Todo } from "../types/todos";
 import { FilterStatus } from "../types/filter-status";
 
-const MOCK_TODOS: Todo[] = [
-  { id: 2, title: "PROFIT!!!", completed: false },
-  { id: 1, title: "Try it with ReactJS", completed: false },
-  { id: 0, title: "Learn TypeScript", completed: true },
-];
-
 export class Todos {
-  items: Todo[] = MOCK_TODOS;
+  items: Todo[] = [];
   filterTemplate: string = "";
   filterStatus: FilterStatus = "all";
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
+    this.getItemsFromLS();
   }
 
   get totalItemsAmount(): number {
@@ -50,7 +46,15 @@ export class Todos {
     return this.itemsByTitle.filter((item) => !item.completed);
   }
 
-  private findItem(id: number): Todo | void {
+  private getItemsFromLS(): void {
+    const storedItems = localStorage.getItem("todos");
+
+    if (storedItems) {
+      this.items = JSON.parse(storedItems);
+    }
+  }
+
+  private findItem(id: string): Todo | void {
     return this.items.find((item) => item.id === id);
   }
 
@@ -64,7 +68,7 @@ export class Todos {
 
   addItem(title: string): void {
     const newTodo: Todo = {
-      id: +Math.random().toFixed(7).slice(2),
+      id: uuidv4(),
       title,
       completed: false,
     };
@@ -72,21 +76,30 @@ export class Todos {
     this.items.unshift(newTodo);
   }
 
-  checkItem(id: number): void {
+  checkItem(id: string): void {
     const found = this.findItem(id);
     if (found) {
       found.completed = !found.completed;
     }
   }
 
-  removeItem(id: number): void {
+  removeItem(id: string): void {
     this.items = this.items.filter((item) => item.id !== id);
   }
 
-  updateItem(id: number, title: string): void {
+  updateItem(id: string, title: string): void {
     const found = this.findItem(id);
     if (found) {
       found.title = title;
     }
   }
 }
+
+export const todos = new Todos();
+
+reaction(
+  () => JSON.stringify(todos.items),
+  (serializedItems) => {
+    localStorage.setItem("todos", serializedItems);
+  }
+);
