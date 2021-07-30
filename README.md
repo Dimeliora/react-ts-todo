@@ -23,7 +23,7 @@
 
 ## Установка
 ```bash
-1. git clone https://github.com/Dimeliora/react-table-generator
+1. git clone https://github.com/Dimeliora/react-ts-todo
 2. cd react-table-generator
 3. npm install (yarn)
 4. npm start (yarn start)
